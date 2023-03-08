@@ -7,10 +7,10 @@ public class RedPillCounter : MonoBehaviour
 {
     int pillCount = 0;
     public TMP_Text redpillCount;
-    // Start is called before the first frame update
+    private Vector3 scaleup;
     void Start()
     {
-        
+        scaleup = new Vector3(0.05f, 0.05f, 0.05f);
     }
 
     // Update is called once per frame
@@ -18,10 +18,11 @@ public class RedPillCounter : MonoBehaviour
     {
         
     }
-    private void  OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Red Pill"))
             pillCount++;
-        redpillCount.text = pillCount.ToString();
+            redpillCount.text = pillCount.ToString();
+            gameObject.transform.localScale += scaleup;
     }
 }

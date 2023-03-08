@@ -5,12 +5,12 @@ using TMPro;
 
 public class BluePillCounter : MonoBehaviour
 {
-    int BluepillCount = 0;
+    int pillCount = 0;
     public TMP_Text bluepillCount;
-    // Start is called before the first frame update
+    private Vector3 BlueScaleUp;
     void Start()
     {
-
+        BlueScaleUp = new Vector3(0.05f, 0.05f, 0.05f);
     }
 
     // Update is called once per frame
@@ -21,7 +21,8 @@ public class BluePillCounter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Blue Pill"))
-            BluepillCount++;
-        bluepillCount.text = BluepillCount.ToString();
+            pillCount++;
+            bluepillCount.text = pillCount.ToString();
+            gameObject.transform.localScale += BlueScaleUp;
     }
 }
